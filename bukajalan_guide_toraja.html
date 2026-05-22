@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toraja Travel Guide — Buka Jalan Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --cream:#F5F0E8; --cream-mid:#E8DFD0; --cream-dark:#D4C8B4;
+  --honey:#C49A58; --honey-mid:#9F7D56;
+  --dark:#1A1710; --dark-mid:#252118;
+  --text:#2E2A22; --text-mid:#6E6458;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Nunito',sans-serif;
+}
+html { font-size:16px; scroll-behavior:smooth; }
+body { background:var(--cream); color:var(--text); font-family:var(--sans); font-weight:300; line-height:1.65; overflow-x:hidden; }
+
+nav { position:fixed; top:0; left:0; right:0; z-index:300; display:flex; align-items:center; justify-content:space-between; padding:0 56px; height:72px; background:rgba(245,240,232,0.97); backdrop-filter:blur(16px); box-shadow:0 1px 0 var(--cream-mid); }
+.nav-logo img { height:34px; width:auto; display:block; filter:brightness(0) saturate(100%) invert(52%) sepia(35%) saturate(550%) hue-rotate(358deg) brightness(88%); }
+.nav-links { display:flex; gap:36px; list-style:none; align-items:center; }
+.nav-links a { font-family:var(--sans); font-size:11px; font-weight:500; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-mid); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--honey-mid); }
+.nav-links a.active { border-bottom:1px solid var(--honey-mid); padding-bottom:2px; }
+.nav-cart { font-family:var(--sans); font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-mid); text-decoration:none; border:1px solid var(--cream-dark); padding:8px 20px; border-radius:40px; transition:all 0.2s; }
+.nav-cart:hover { border-color:var(--honey-mid); color:var(--honey-mid); }
+
+/* HERO — full bleed single image */
+.guide-hero { margin-top:72px; position:relative; height:90vh; min-height:600px; overflow:hidden; background:var(--dark); display:flex; align-items:flex-end; }
+.guide-hero-bg { position:absolute; inset:0; background-image:url('https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0615.jpg'); background-size:cover; background-position:center 25%; opacity:0.75; }
+.guide-hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(18,14,8,0.92) 0%,rgba(18,14,8,0.2) 55%,transparent 100%); }
+.breadcrumb { position:absolute; top:100px; left:80px; z-index:2; display:flex; align-items:center; gap:10px; }
+.breadcrumb a, .breadcrumb span { font-family:var(--sans); font-size:10px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s; }
+.breadcrumb a:hover { color:var(--honey); }
+.breadcrumb-sep { color:rgba(255,255,255,0.2); }
+.guide-hero-content { position:relative; z-index:2; padding:0 80px 88px; display:grid; grid-template-columns:1fr auto; align-items:flex-end; gap:60px; width:100%; }
+.guide-hero-left { max-width:680px; }
+.hero-region { font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:0.26em; text-transform:uppercase; color:var(--honey); margin-bottom:14px; display:flex; align-items:center; gap:12px; }
+.hero-region::before { content:''; display:block; width:28px; height:1px; background:var(--honey); }
+.guide-hero-left h1 { font-family:var(--serif); font-size:clamp(52px,7vw,88px); font-weight:400; color:#fff; line-height:0.95; margin-bottom:18px; }
+.guide-hero-left h1 em { font-style:italic; color:var(--honey); display:block; font-size:0.72em; }
+.guide-hero-left p { font-family:var(--serif); font-size:18px; font-style:italic; color:rgba(255,255,255,0.55); }
+
+/* BUY CARD floating */
+.buy-card { background:var(--cream); padding:36px 32px; min-width:280px; flex-shrink:0; }
+.buy-card-label { font-family:var(--sans); font-size:9px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-mid); margin-bottom:8px; }
+.buy-card-price { font-family:var(--serif); font-size:42px; font-weight:400; color:var(--dark); line-height:1; margin-bottom:4px; }
+.buy-card-note { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-mid); margin-bottom:24px; }
+.btn-buy { display:block; padding:15px 24px; background:var(--honey); color:#fff; font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; text-align:center; transition:background 0.2s; margin-bottom:10px; }
+.btn-buy:hover { background:var(--honey-mid); }
+.btn-preview { display:block; padding:13px 24px; border:1px solid var(--cream-dark); color:var(--text-mid); font-family:var(--sans); font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; text-align:center; transition:all 0.2s; }
+.btn-preview:hover { border-color:var(--honey-mid); color:var(--honey-mid); }
+.buy-card-features { margin-top:20px; display:flex; flex-direction:column; gap:8px; }
+.buy-feat { display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:12px; font-weight:300; color:var(--text-mid); }
+.buy-feat::before { content:'✓'; color:var(--honey); font-weight:600; }
+
+/* INFO BAR */
+.info-bar { background:var(--dark-mid); padding:44px 80px; }
+.info-bar-inner { display:flex; justify-content:center; gap:0; max-width:900px; margin:0 auto; }
+.info-item { flex:1; text-align:center; padding:0 28px; border-right:1px solid rgba(255,255,255,0.07); }
+.info-item:last-child { border-right:none; }
+.info-icon { font-size:20px; margin-bottom:10px; display:block; }
+.info-label { font-family:var(--sans); font-size:9px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:6px; }
+.info-value { font-family:var(--serif); font-size:16px; font-weight:400; color:rgba(255,255,255,0.78); line-height:1.3; }
+
+/* CONTENT BODY */
+.guide-body { display:grid; grid-template-columns:1fr 320px; gap:80px; padding:80px 80px; align-items:start; }
+
+/* Article text */
+.guide-article {}
+.section-eyebrow { font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:var(--honey-mid); margin-bottom:12px; }
+.guide-article h2 { font-family:var(--serif); font-size:clamp(26px,3vw,38px); font-weight:400; color:var(--dark); line-height:1.15; margin-bottom:20px; }
+.guide-article h2 em { font-style:italic; color:var(--honey-mid); }
+.guide-article p { font-family:var(--sans); font-size:14px; font-weight:300; color:var(--text-mid); line-height:1.88; margin-bottom:20px; }
+.guide-article p strong { font-weight:600; color:var(--text); }
+
+/* Highlights */
+.highlights { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--cream-dark); border:1px solid var(--cream-dark); margin:40px 0; }
+.highlight { background:var(--cream); padding:28px 24px; }
+.hl-num { font-family:var(--serif); font-size:36px; font-weight:400; color:var(--honey); line-height:1; margin-bottom:8px; opacity:0.6; }
+.hl-title { font-family:var(--serif); font-size:17px; font-weight:400; color:var(--dark); margin-bottom:6px; }
+.hl-text { font-family:var(--sans); font-size:12px; font-weight:300; color:var(--text-mid); line-height:1.7; }
+
+/* Photo gallery strip */
+.gallery-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin:40px 0; }
+.gallery-img { aspect-ratio:4/3; overflow:hidden; }
+.gallery-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 4s ease; }
+.gallery-img:hover img { transform:scale(1.05); }
+
+/* Sidebar sticky */
+.guide-sidebar { position:sticky; top:100px; display:flex; flex-direction:column; gap:24px; }
+.sidebar-card { background:var(--cream-mid); padding:28px 24px; border:1px solid var(--cream-dark); }
+.sidebar-title { font-family:var(--serif); font-size:18px; font-weight:400; color:var(--dark); margin-bottom:16px; }
+.sidebar-title em { font-style:italic; color:var(--honey-mid); }
+.sidebar-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.sidebar-list li { display:flex; align-items:flex-start; gap:10px; font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text-mid); line-height:1.5; }
+.sidebar-list li::before { content:'→'; color:var(--honey); flex-shrink:0; font-size:12px; margin-top:2px; }
+.sidebar-cta { background:var(--dark); padding:32px 24px; }
+.sidebar-cta p { font-family:var(--serif); font-size:18px; font-weight:400; font-style:italic; color:rgba(255,255,255,0.65); margin-bottom:16px; line-height:1.4; }
+.btn-sidebar { display:block; padding:13px 20px; background:var(--honey); color:#fff; font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none; text-align:center; transition:background 0.2s; }
+.btn-sidebar:hover { background:var(--honey-mid); }
+
+/* Preview section */
+.preview-section { padding:0 80px 80px; }
+.preview-section h2 { font-family:var(--serif); font-size:clamp(26px,3vw,38px); font-weight:400; color:var(--dark); margin-bottom:8px; }
+.preview-section h2 em { font-style:italic; color:var(--honey-mid); }
+.preview-note { font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text-mid); margin-bottom:36px; }
+.preview-pages { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.preview-page { background:var(--cream-mid); aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; border:1px solid var(--cream-dark); position:relative; overflow:hidden; }
+.preview-page img { width:100%; height:100%; object-fit:cover; opacity:0.7; }
+.preview-page-num { position:absolute; bottom:12px; right:14px; font-family:var(--serif); font-size:22px; font-weight:400; color:rgba(255,255,255,0.3); }
+
+/* OTHER GUIDES */
+.other-guides { background:var(--dark); padding:80px; }
+.other-guides .eyebrow { font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:var(--honey); margin-bottom:12px; }
+.other-guides h2 { font-family:var(--serif); font-size:clamp(24px,3vw,38px); font-weight:400; color:#fff; margin-bottom:48px; }
+.other-guides h2 em { font-style:italic; color:var(--honey); }
+.other-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(255,255,255,0.05); }
+.other-card { position:relative; overflow:hidden; aspect-ratio:4/3; text-decoration:none; display:block; }
+.other-card img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.7); transition:filter 0.4s, transform 4s; }
+.other-card:hover img { filter:brightness(0.9); transform:scale(1.04); }
+.other-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(18,14,8,0.8) 0%,transparent 55%); }
+.other-text { position:absolute; bottom:0; left:0; right:0; padding:24px 28px; }
+.other-region { font-family:var(--sans); font-size:9px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--honey); margin-bottom:4px; }
+.other-name { font-family:var(--serif); font-size:22px; font-weight:400; color:#fff; }
+.other-cta { font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:6px; transition:color 0.2s; }
+.other-card:hover .other-cta { color:var(--honey); }
+
+footer { background:var(--cream-mid); padding:72px 80px 44px; border-top:1px solid var(--cream-dark); }
+.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr; gap:72px; padding-bottom:52px; border-bottom:1px solid var(--cream-dark); margin-bottom:28px; }
+.footer-logo { margin-bottom:18px; }
+.footer-logo img { height:30px; width:auto; display:block; filter:brightness(0) saturate(100%) invert(52%) sepia(35%) saturate(550%) hue-rotate(358deg) brightness(88%); }
+.footer-tagline { font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text-mid); line-height:1.8; max-width:280px; margin-bottom:24px; }
+.footer-social { display:flex; gap:20px; }
+.footer-social a { font-family:var(--sans); font-size:10px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-mid); text-decoration:none; transition:color 0.2s; }
+.footer-social a:hover { color:var(--honey-mid); }
+.footer-col h4 { font-family:var(--sans); font-size:9px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-mid); opacity:0.6; margin-bottom:18px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.footer-col a { font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text); opacity:0.65; text-decoration:none; transition:all 0.2s; }
+.footer-col a:hover { color:var(--honey-mid); opacity:1; }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; }
+.footer-bottom p, .footer-bottom a { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-mid); opacity:0.5; text-decoration:none; }
+.footer-bottom a:hover { opacity:1; color:var(--honey-mid); }
+
+.fade-up { opacity:0; transform:translateY(26px); transition:opacity 0.75s ease,transform 0.75s ease; }
+.fade-up.in { opacity:1; transform:translateY(0); }
+.d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="bukajalan_home_v5.html" class="nav-logo"><img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan"></a>
+  <ul class="nav-links">
+    <li><a href="bukajalan_home_v5.html">Home</a></li>
+    <li><a href="bukajalan_travel_guides.html" class="active">Travel Guides</a></li>
+    <li><a href="bukajalan_planning.html">Travel Planning</a></li>
+    <li><a href="bukajalan_blog.html">Blog</a></li>
+    <li><a href="bukajalan_about.html">About Us</a></li>
+    <li><a href="bukajalan_contact.html">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cart">Cart (0)</a>
+</nav>
+
+<!-- HERO -->
+<section class="guide-hero">
+  <div class="guide-hero-bg"></div>
+  <div class="breadcrumb">
+    <a href="bukajalan_home_v5.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="bukajalan_travel_guides.html">Travel Guides</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Toraja</span>
+  </div>
+  <div class="guide-hero-content">
+    <div class="guide-hero-left">
+      <p class="hero-region">South Sulawesi · Indonesia</p>
+      <h1>Toraja<em>Travel Guide</em></h1>
+      <p>Ancient traditions, highland landscapes and the most unique funeral ceremonies in the world</p>
+    </div>
+    <div class="buy-card">
+      <p class="buy-card-label">Digital Travel Guide</p>
+      <p class="buy-card-price">€ 12,–</p>
+      <p class="buy-card-note">One-time purchase · Instant download</p>
+      <a href="#" class="btn-buy">Buy guide now →</a>
+      <a href="#preview" class="btn-preview">Preview pages</a>
+      <div class="buy-card-features">
+        <span class="buy-feat">50+ pages of local tips</span>
+        <span class="buy-feat">Recommended stays & restaurants</span>
+        <span class="buy-feat">Transport & logistics</span>
+        <span class="buy-feat">Suggested itinerary 5–7 days</span>
+        <span class="buy-feat">PDF, instant download</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-item"><span class="info-icon">📷</span><p class="info-label">Famous For</p><p class="info-value">Torajan funeral rituals, tongkonan houses & highland scenery</p></div>
+    <div class="info-item"><span class="info-icon">🗣</span><p class="info-label">Main Language</p><p class="info-value">Bahasa Indonesia, Torajan</p></div>
+    <div class="info-item"><span class="info-icon">📅</span><p class="info-label">Best Time to Visit</p><p class="info-value">June – September</p></div>
+    <div class="info-item"><span class="info-icon">✈️</span><p class="info-label">Nearest Airport</p><p class="info-value">Makassar (UPG), 8–9 hrs by road</p></div>
+  </div>
+</div>
+
+<!-- BODY: article + sidebar -->
+<div class="guide-body">
+  <article class="guide-article fade-up">
+    <p class="section-eyebrow">Introduction</p>
+    <h2>Why Toraja <em>surprised us completely</em></h2>
+    <p>We had heard about Toraja before our first visit, but nothing quite prepares you for the reality of it. The highlands of South Sulawesi feel like a world apart — lush, green, cool, and filled with a culture that has no real comparison anywhere else in Indonesia.</p>
+    <p>The Torajan people are known above all for their elaborate funeral ceremonies — events that can last days, involve hundreds of guests, and hold a deep spiritual significance. It sounds unusual on paper. In person, it is one of the most moving things we have ever witnessed. <strong>You will understand when you get there, and we cannot wait for you to experience it.</strong></p>
+
+    <div class="highlights">
+      <div class="highlight"><div class="hl-num">01</div><h4 class="hl-title">Funeral ceremonies</h4><p class="hl-text">Unlike anything else in the world. Respectful visitors are often welcome — our guide explains how to attend one properly.</p></div>
+      <div class="highlight"><div class="hl-num">02</div><h4 class="hl-title">Tongkonan houses</h4><p class="hl-text">The iconic boat-shaped rooftops dominate the landscape. Each one is a piece of living architecture that tells a family's story.</p></div>
+      <div class="highlight"><div class="hl-num">03</div><h4 class="hl-title">The highland scenery</h4><p class="hl-text">Rice terraces, mist-covered valleys, and mountain paths that feel untouched. This is why we keep coming back.</p></div>
+      <div class="highlight"><div class="hl-num">04</div><h4 class="hl-title">The local food</h4><p class="hl-text">Pa'piong, Torajan coffee, and fresh market produce. Food here is simple, honest, and unforgettable.</p></div>
+    </div>
+
+    <p class="section-eyebrow">Getting there</p>
+    <h2>How to <em>reach Toraja</em></h2>
+    <p>Most visitors fly into Makassar (Sultan Hasanuddin Airport) and then take a shared bus or private car to Rantepao — the main town in Toraja. The journey takes around 8–9 hours through increasingly dramatic landscape. We recommend doing it by day so you do not miss the views.</p>
+    <p>There is also a faster route via a smaller airport in Palopo, but connections are limited. Our guide covers all options with current prices and recommended operators.</p>
+
+    <div class="gallery-strip">
+      <div class="gallery-img"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg" alt="Toraja 1"></div>
+      <div class="gallery-img"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/DSCF3306.jpg" alt="Toraja 2"></div>
+      <div class="gallery-img"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/IMG_7124.jpg" alt="Toraja 3"></div>
+    </div>
+
+    <p class="section-eyebrow">Our experience</p>
+    <h2>What the guide <em>actually covers</em></h2>
+    <p>We have visited Toraja three times now — each time discovering something new. The guide we built from those visits covers everything we wished we had known from the start: where to stay (from budget homestays to the few lovely boutique options), which villages are worth the detour, how to respectfully attend a ceremony if you are lucky enough to encounter one, and where to eat without being pointed to the tourist menu.</p>
+    <p>There is also a suggested 5–7 day itinerary for first-time visitors, plus advice on how to extend your trip into the surrounding highlands if you have more time.</p>
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="guide-sidebar fade-up d1">
+    <div class="sidebar-card">
+      <h3 class="sidebar-title">What's <em>inside</em></h3>
+      <ul class="sidebar-list">
+        <li>Where to stay — all budgets</li>
+        <li>Best local restaurants & warungs</li>
+        <li>How to attend a funeral ceremony</li>
+        <li>Top villages & viewpoints</li>
+        <li>Transport from Makassar</li>
+        <li>Suggested 5–7 day itinerary</li>
+        <li>Tips for extending into the highlands</li>
+        <li>Local phrases in Torajan</li>
+        <li>What to pack for the highlands</li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3 class="sidebar-title">Best time <em>to visit</em></h3>
+      <ul class="sidebar-list">
+        <li>June–September: dry season, best for hiking</li>
+        <li>August: peak funeral season — most ceremonies</li>
+        <li>December–March: rainy but fewer tourists</li>
+        <li>Avoid: national holidays (very crowded)</li>
+      </ul>
+    </div>
+    <div class="sidebar-cta">
+      <p>Want us to plan your Toraja trip for you?</p>
+      <a href="bukajalan_planning.html" class="btn-sidebar">Plan my trip →</a>
+    </div>
+  </aside>
+</div>
+
+<!-- PREVIEW PAGES -->
+<section class="preview-section fade-up" id="preview">
+  <p class="section-eyebrow">Inside the guide</p>
+  <h2>A preview of <em>the pages</em></h2>
+  <p class="preview-note">50+ pages of curated tips, maps, and personal recommendations — all based on our own experience in Toraja.</p>
+  <div class="preview-pages">
+    <div class="preview-page"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0615.jpg" alt="Page preview"><span class="preview-page-num">01</span></div>
+    <div class="preview-page"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/DSCF4092.jpg" alt="Page preview"><span class="preview-page-num">02</span></div>
+    <div class="preview-page"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/IMG_7124.jpg" alt="Page preview"><span class="preview-page-num">03</span></div>
+    <div class="preview-page"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg" alt="Page preview"><span class="preview-page-num">04</span></div>
+  </div>
+</section>
+
+<!-- OTHER GUIDES -->
+<section class="other-guides fade-up">
+  <p class="eyebrow">Keep exploring</p>
+  <h2>Other destinations <em>we love</em></h2>
+  <div class="other-grid">
+    <a href="#" class="other-card">
+      <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Wakatobi/dji_export_20260213_photo_0015.JPG" alt="Wakatobi">
+      <div class="other-overlay"></div>
+      <div class="other-text">
+        <p class="other-region">South-East Sulawesi</p>
+        <p class="other-name">Wakatobi</p>
+        <p class="other-cta">View guide →</p>
+      </div>
+    </a>
+    <a href="#" class="other-card">
+      <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Central%20Sulawesi/IMG_5873.jpg" alt="Central Sulawesi">
+      <div class="other-overlay"></div>
+      <div class="other-text">
+        <p class="other-region">Central Sulawesi</p>
+        <p class="other-name">Togean Islands</p>
+        <p class="other-cta">View guide →</p>
+      </div>
+    </a>
+    <a href="bukajalan_planning.html" class="other-card">
+      <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Java/IMG_5684.jpg" alt="Custom trip">
+      <div class="other-overlay"></div>
+      <div class="other-text">
+        <p class="other-region">Anywhere in Indonesia</p>
+        <p class="other-name">Custom Trip</p>
+        <p class="other-cta">Plan with us →</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan" onerror="this.style.display='none'"></div>
+      <p class="footer-tagline">From our experience to your next adventure — we open the road to Indonesia's authentic culture and untouched nature.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bukajalantravel/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@bukajalantravel" target="_blank">YouTube</a>
+        <a href="https://www.tiktok.com/@bukajalantravel" target="_blank">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Pages</h4><ul>
+      <li><a href="bukajalan_home_v5.html">Home</a></li>
+      <li><a href="bukajalan_travel_guides.html">Travel Guides</a></li>
+      <li><a href="bukajalan_planning.html">Travel Planning</a></li>
+      <li><a href="bukajalan_blog.html">Blog</a></li>
+      <li><a href="bukajalan_about.html">About Us</a></li>
+      <li><a href="bukajalan_contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms & Conditions</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Buka Jalan Travel Planner. All rights reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+const fades = document.querySelectorAll('.fade-up');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.05 });
+fades.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Alps of Toraja — Buka Jalan Travel Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F5F0E8;--cream-mid:#E8DFD0;--cream-dark:#D4C8B4;
+  --honey:#C49A58;--honey-mid:#9F7D56;
+  --dark:#1A1710;--dark-mid:#252118;
+  --text:#2E2A22;--text-mid:#6E6458;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Nunito',sans-serif;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.65;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:72px;background:rgba(245,240,232,0.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--cream-mid)}
+.nav-logo img{height:34px;width:auto;display:block;filter:brightness(0) saturate(100%) invert(52%) sepia(35%) saturate(550%) hue-rotate(358deg) brightness(88%)}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--honey-mid)}
+.nav-links a.active{border-bottom:1px solid var(--honey-mid);padding-bottom:2px}
+.nav-cart{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;border:1px solid var(--cream-dark);padding:8px 20px;border-radius:40px;transition:all 0.2s}
+.nav-cart:hover{border-color:var(--honey-mid);color:var(--honey-mid)}
+
+/* HERO */
+.post-hero{margin-top:72px;position:relative;height:80vh;min-height:540px;overflow:hidden;background:var(--dark);display:flex;align-items:flex-end}
+.post-hero-bg{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg');background-size:cover;background-position:center 30%;opacity:0.7}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,8,0.92) 0%,rgba(18,14,8,0.15) 60%,transparent 100%)}
+.breadcrumb{position:absolute;top:100px;left:80px;z-index:2;display:flex;align-items:center;gap:10px}
+.breadcrumb a,.breadcrumb span{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+.breadcrumb a:hover{color:var(--honey)}
+.breadcrumb-sep{color:rgba(255,255,255,0.18)}
+.post-hero-content{position:relative;z-index:2;padding:0 80px 88px;max-width:860px}
+.post-tag-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.post-tag{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--honey);border:1px solid var(--honey);padding:4px 12px}
+.post-date{font-family:var(--sans);font-size:10px;font-weight:400;color:rgba(255,255,255,0.3);letter-spacing:0.1em}
+.post-hero-content h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,72px);font-weight:400;color:#fff;line-height:1.05;margin-bottom:18px}
+.post-hero-content h1 em{font-style:italic;color:var(--honey);display:block}
+.post-intro{font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,0.55);line-height:1.6;max-width:640px}
+
+/* ARTICLE LAYOUT */
+.article-wrap{display:grid;grid-template-columns:1fr 300px;gap:80px;padding:80px 80px;align-items:start;max-width:1400px;margin:0 auto}
+
+/* ARTICLE TEXT */
+article p{font-family:var(--sans);font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.92;margin-bottom:24px}
+article p strong{font-weight:600;color:var(--text)}
+article h2{font-family:var(--serif);font-size:clamp(24px,2.8vw,36px);font-weight:400;color:var(--dark);line-height:1.15;margin:48px 0 18px}
+article h2 em{font-style:italic;color:var(--honey-mid)}
+article h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--dark);margin:36px 0 14px}
+
+/* Pull quote */
+.pull-quote{border-left:3px solid var(--honey);padding:24px 32px;margin:40px 0;background:var(--cream-mid)}
+.pull-quote p{font-family:var(--serif);font-size:22px;font-style:italic;font-weight:400;color:var(--dark);line-height:1.5;margin:0}
+
+/* Inline photo */
+.article-photo{margin:40px 0}
+.article-photo img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.article-photo figcaption{font-family:var(--sans);font-size:11px;font-weight:400;color:var(--text-mid);margin-top:10px;font-style:italic}
+
+/* Photo 2-col */
+.photo-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:40px 0}
+.photo-2col figure img{width:100%;display:block;aspect-ratio:3/2;object-fit:cover}
+.photo-2col figcaption{font-family:var(--sans);font-size:11px;color:var(--text-mid);margin-top:8px;font-style:italic}
+
+/* Tip box */
+.tip-box{background:var(--dark-mid);padding:28px 32px;margin:40px 0;display:flex;gap:16px;align-items:flex-start}
+.tip-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.tip-box p{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(255,255,255,0.65);line-height:1.8;margin:0}
+.tip-box p strong{color:var(--honey);font-weight:600}
+
+/* Article tags */
+.article-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:48px;padding-top:32px;border-top:1px solid var(--cream-mid)}
+.article-tag{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-mid);border:1px solid var(--cream-dark);padding:6px 14px;text-decoration:none;transition:all 0.2s}
+.article-tag:hover{border-color:var(--honey);color:var(--honey-mid)}
+
+/* SIDEBAR */
+.post-sidebar{position:sticky;top:96px;display:flex;flex-direction:column;gap:24px}
+.sidebar-meta{background:var(--cream-mid);padding:28px 24px;border:1px solid var(--cream-dark)}
+.sidebar-meta h4{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--dark);margin-bottom:16px}
+.sidebar-meta h4 em{font-style:italic;color:var(--honey-mid)}
+.meta-row{display:flex;flex-direction:column;gap:12px}
+.meta-item{display:flex;flex-direction:column;gap:3px}
+.meta-label{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mid);opacity:0.6}
+.meta-value{font-family:var(--sans);font-size:13px;font-weight:400;color:var(--text)}
+
+.sidebar-guide{background:var(--dark);padding:28px 24px}
+.sidebar-guide p{font-family:var(--serif);font-size:16px;font-style:italic;color:rgba(255,255,255,0.6);margin-bottom:8px;line-height:1.4}
+.sidebar-guide small{font-family:var(--sans);font-size:12px;font-weight:300;color:rgba(255,255,255,0.35);display:block;margin-bottom:18px}
+.btn-guide{display:block;padding:13px 18px;background:var(--honey);color:#fff;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;margin-bottom:8px}
+.btn-guide:hover{background:var(--honey-mid)}
+.btn-plan{display:block;padding:11px 18px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.55);font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;text-align:center;transition:all 0.2s}
+.btn-plan:hover{border-color:var(--honey);color:var(--honey)}
+
+.sidebar-share{padding:24px;border:1px solid var(--cream-dark)}
+.sidebar-share h4{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mid);margin-bottom:14px}
+.share-btns{display:flex;flex-direction:column;gap:8px}
+.share-btn{display:flex;align-items:center;gap:10px;padding:10px 14px;font-family:var(--sans);font-size:11px;font-weight:500;color:var(--text-mid);border:1px solid var(--cream-dark);text-decoration:none;transition:all 0.2s;cursor:pointer;background:none}
+.share-btn:hover{border-color:var(--honey);color:var(--honey-mid)}
+
+/* AUTHOR BIO */
+.author-section{background:var(--dark-mid);padding:72px 80px}
+.author-card{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;max-width:760px;margin:0 auto}
+.author-avatar{width:96px;height:96px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--honey)}
+.author-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.author-name{font-family:var(--serif);font-size:24px;font-weight:400;color:#fff;margin-bottom:4px}
+.author-name em{font-style:italic;color:var(--honey)}
+.author-sub{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px}
+.author-bio{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.85}
+
+/* MORE POSTS */
+.more-posts{padding:80px 80px;background:var(--cream)}
+.more-posts h2{font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:400;color:var(--dark);margin-bottom:48px}
+.more-posts h2 em{font-style:italic;color:var(--honey-mid)}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--cream-dark);border:1px solid var(--cream-dark)}
+.more-card{background:var(--cream);text-decoration:none;display:flex;flex-direction:column;transition:background 0.3s}
+.more-card:hover{background:#fff}
+.more-card-img{aspect-ratio:16/9;overflow:hidden}
+.more-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 4s}
+.more-card:hover .more-card-img img{transform:scale(1.04)}
+.more-card-body{padding:24px 24px 28px;flex:1;display:flex;flex-direction:column}
+.more-card-tag{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--honey-mid);margin-bottom:8px}
+.more-card-title{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--dark);line-height:1.3;flex:1}
+.more-card-date{font-family:var(--sans);font-size:11px;color:var(--text-mid);margin-top:12px}
+
+footer{background:var(--cream-mid);padding:72px 80px 44px;border-top:1px solid var(--cream-dark)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:72px;padding-bottom:52px;border-bottom:1px solid var(--cream-dark);margin-bottom:28px}
+.footer-logo{margin-bottom:18px}
+.footer-logo img{height:30px;width:auto;display:block;filter:brightness(0) saturate(100%) invert(52%) sepia(35%) saturate(550%) hue-rotate(358deg) brightness(88%)}
+.footer-tagline{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--text-mid);line-height:1.8;max-width:280px;margin-bottom:24px}
+.footer-social{display:flex;gap:20px}
+.footer-social a{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.2s}
+.footer-social a:hover{color:var(--honey-mid)}
+.footer-col h4{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-mid);opacity:0.6;margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--text);opacity:0.65;text-decoration:none;transition:all 0.2s}
+.footer-col a:hover{color:var(--honey-mid);opacity:1}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-family:var(--sans);font-size:11px;font-weight:300;color:var(--text-mid);opacity:0.5;text-decoration:none}
+.footer-bottom a:hover{opacity:1;color:var(--honey-mid)}
+
+.fade-up{opacity:0;transform:translateY(26px);transition:opacity 0.75s ease,transform 0.75s ease}
+.fade-up.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="bukajalan_home_v5.html" class="nav-logo"><img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan"></a>
+  <ul class="nav-links">
+    <li><a href="bukajalan_home_v5.html">Home</a></li>
+    <li><a href="bukajalan_travel_guides.html">Travel Guides</a></li>
+    <li><a href="bukajalan_planning.html">Travel Planning</a></li>
+    <li><a href="bukajalan_blog.html" class="active">Blog</a></li>
+    <li><a href="bukajalan_about.html">About Us</a></li>
+    <li><a href="bukajalan_contact.html">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cart">Cart (0)</a>
+</nav>
+
+<section class="post-hero">
+  <div class="post-hero-bg"></div>
+  <div class="breadcrumb">
+    <a href="bukajalan_home_v5.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="bukajalan_blog.html">Blog</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>The Alps of Toraja</span>
+  </div>
+  <div class="post-hero-content">
+    <div class="post-tag-row">
+      <span class="post-tag">South Sulawesi</span>
+      <span class="post-date">February 2026 · 8 min read</span>
+    </div>
+    <h1>The Alps of Toraja<em>Where Indonesia surprises you most</em></h1>
+    <p class="post-intro">High in the mountains of South Sulawesi, the landscape opens up into something that feels almost impossibly dramatic — and completely unlike anywhere else we have travelled.</p>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <article class="fade-up">
+    <p>We had heard the comparison before — people calling the highlands of Toraja "the Alps of Indonesia." It sounds like the kind of thing a travel writer says when they have run out of better words. But standing there, looking out over layered green ridges disappearing into mist, with traditional tongkonan houses dotting the slopes like something from a dream, we understood exactly what they meant.</p>
+
+    <p>Toraja sits in the interior of South Sulawesi, roughly 8–9 hours by road from Makassar. Most visitors come for the culture — the elaborate funeral ceremonies, the ancient cliff graves, the carved wooden houses — and they are right to. But it was the landscape that caught us off guard. <strong>We did not expect to feel so small here.</strong></p>
+
+    <div class="pull-quote">
+      <p>"We did not expect to feel so small here. The mountains have a way of reminding you that Indonesia is far bigger and stranger than you imagined."</p>
+    </div>
+
+    <h2>Getting there <em>without a guide</em></h2>
+    <p>Most people take the overnight bus from Makassar — it leaves around 8pm and arrives in Rantepao, the main town, around 5–6am. We have done this several times and it is perfectly fine. Bring a jacket. The highlands are genuinely cool at night, and the bus air conditioning is aggressive.</p>
+    <p>If you want more flexibility, hiring a car with driver in Makassar is an option. Expect to pay around IDR 1.2–1.5 million for the one-way trip. It is longer but you can stop for photos along the way, and the landscape builds gradually in a way that feels earned.</p>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <p><strong>Local tip:</strong> If you take the bus, try to book a seat on the right side of the vehicle for the last 2 hours of the journey — the views as you descend into the Torajan valley are best from that side, and worth being awake for.</p>
+    </div>
+
+    <figure class="article-photo">
+      <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/DSCF3306.jpg" alt="Toraja highland landscape">
+      <figcaption>The highland road into Rantepao — the mist usually lifts around 9am</figcaption>
+    </figure>
+
+    <h2>What nobody tells you <em>about the ceremonies</em></h2>
+    <p>Toraja funeral ceremonies are the thing everyone reads about before they arrive. They are also the thing that is most difficult to describe accurately. They are not morbid. They are not performances for tourists. They are living community events — often joyful, always moving, and deeply rooted in a relationship with death and ancestors that has no real parallel in Western culture.</p>
+    <p>We have attended three ceremonies across our visits. Each time felt like a privilege. Each time, we left feeling like we had been allowed into something that would take years to fully understand. <strong>You will not understand it the first time. That is not the point.</strong></p>
+
+    <div class="photo-2col">
+      <figure>
+        <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0615.jpg" alt="Toraja ceremony">
+        <figcaption>Traditional dress at a funeral ceremony in the highlands</figcaption>
+      </figure>
+      <figure>
+        <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/IMG_7124.jpg" alt="Toraja landscape">
+        <figcaption>Rice terraces near Batutumonga — one of the best viewpoints in Toraja</figcaption>
+      </figure>
+    </div>
+
+    <h2>Where to stay <em>and what to eat</em></h2>
+    <p>Rantepao has a range of accommodation, from very basic guesthouses to a few genuinely lovely boutique options. We have stayed at both ends of the spectrum. For your first visit, we recommend something mid-range — not so central that you miss the quiet of the hills, not so remote that logistics become a problem.</p>
+    <p>Food in Toraja is honest and simple. Pa'piong — meat cooked inside bamboo — is the thing to try. Torajan coffee, grown in the highlands, is some of the best in Indonesia. The local market in Rantepao opens at dawn and is worth an early morning visit purely for the atmosphere.</p>
+
+    <div class="tip-box">
+      <span class="tip-icon">☕</span>
+      <p><strong>Coffee tip:</strong> Buy whole beans directly from the market, not the vacuum-packed tourist version. Ask for <em>kopi Toraja asli</em> — the real local coffee. It is about a quarter of the price and four times as good.</p>
+    </div>
+
+    <figure class="article-photo">
+      <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg" alt="Tongkonan house Toraja">
+      <figcaption>Tongkonan houses — the boat-shaped rooftops are one of the most distinctive architectural forms in Indonesia</figcaption>
+    </figure>
+
+    <h2>How long <em>to stay</em></h2>
+    <p>Most visitors give Toraja 3–4 days. We think this is the absolute minimum. If you can manage 6–7 days, the pace changes completely — you stop rushing between sites and start actually experiencing the place. You walk more. You talk to people. You find things that are not in any guide.</p>
+    <p>Our Toraja Travel Guide includes a 5–7 day itinerary that balances the must-see locations with the slower, less-visited corners we have discovered across three trips. It also covers how to extend your time into the surrounding highlands if you have the appetite for it.</p>
+
+    <div class="article-tags">
+      <a href="#" class="article-tag">South Sulawesi</a>
+      <a href="#" class="article-tag">Toraja</a>
+      <a href="#" class="article-tag">Culture</a>
+      <a href="#" class="article-tag">Highlands</a>
+      <a href="#" class="article-tag">Indonesia</a>
+      <a href="#" class="article-tag">Travel Tips</a>
+    </div>
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="post-sidebar fade-up">
+    <div class="sidebar-meta">
+      <h4>About <em>this article</em></h4>
+      <div class="meta-row">
+        <div class="meta-item"><span class="meta-label">Written by</span><span class="meta-value">Maartje & Alex</span></div>
+        <div class="meta-item"><span class="meta-label">Published</span><span class="meta-value">February 2026</span></div>
+        <div class="meta-item"><span class="meta-label">Read time</span><span class="meta-value">8 minutes</span></div>
+        <div class="meta-item"><span class="meta-label">Destination</span><span class="meta-value">Toraja, South Sulawesi</span></div>
+        <div class="meta-item"><span class="meta-label">Trips made</span><span class="meta-value">3 visits since 2021</span></div>
+      </div>
+    </div>
+
+    <div class="sidebar-guide">
+      <p>Want all our Toraja tips in one place?</p>
+      <small>50+ pages of curated tips, stays, restaurants & itinerary</small>
+      <a href="bukajalan_guide_toraja.html" class="btn-guide">Buy Toraja Guide — € 12</a>
+      <a href="bukajalan_planning.html" class="btn-plan">Or plan a custom trip →</a>
+    </div>
+
+    <div class="sidebar-share">
+      <h4>Share this article</h4>
+      <div class="share-btns">
+        <button class="share-btn" onclick="navigator.share ? navigator.share({title:'The Alps of Toraja',url:window.location.href}) : navigator.clipboard.writeText(window.location.href)">
+          🔗 Copy link
+        </button>
+        <a href="https://www.instagram.com/bukajalantravel/" target="_blank" class="share-btn">📸 Share on Instagram</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- AUTHOR -->
+<section class="author-section fade-up">
+  <div class="author-card">
+    <div class="author-avatar">
+      <img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/profile-1-scaled.webp" alt="Maartje & Alex"
+           onerror="this.src='https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0615.jpg'">
+    </div>
+    <div>
+      <h3 class="author-name">Maartje & <em>Alex</em></h3>
+      <p class="author-sub">Founders of Buka Jalan Travel</p>
+      <p class="author-bio">A mixed couple from the Netherlands and Indonesia. We have been travelling Sulawesi together since 2019 and are still discovering new things every trip. All our articles are based on experiences we have lived ourselves — no sponsored content, no guesswork.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MORE POSTS -->
+<section class="more-posts fade-up">
+  <h2>More from <em>the blog</em></h2>
+  <div class="more-grid">
+    <a href="#" class="more-card">
+      <div class="more-card-img"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/North%20Sulawesi/7fb2bb9a-26da-468e-b3ee-36fce3138f29.jpg" alt="North Sulawesi"></div>
+      <div class="more-card-body">
+        <p class="more-card-tag">North Sulawesi</p>
+        <p class="more-card-title">Did you know some places still consume wild extreme animals?</p>
+        <p class="more-card-date">February 2026</p>
+      </div>
+    </a>
+    <a href="#" class="more-card">
+      <div class="more-card-img"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/South%20Sulawesi/IMG_2260.JPG" alt="Makassar"></div>
+      <div class="more-card-body">
+        <p class="more-card-tag">South Sulawesi</p>
+        <p class="more-card-title">Our third trip to Sulawesi started about a week ago in Makassar</p>
+        <p class="more-card-date">February 2026</p>
+      </div>
+    </a>
+    <a href="bukajalan_travel_guides.html" class="more-card">
+      <div class="more-card-img"><img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Wakatobi/dji_export_20260213_photo_0015.JPG" alt="Wakatobi"></div>
+      <div class="more-card-body">
+        <p class="more-card-tag">Wakatobi</p>
+        <p class="more-card-title">Explore our Wakatobi Travel Guide — dive, snorkel, and discover the Bajo people</p>
+        <p class="more-card-date">Travel Guide</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan" onerror="this.style.display='none'"></div>
+      <p class="footer-tagline">From our experience to your next adventure.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bukajalantravel/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@bukajalantravel" target="_blank">YouTube</a>
+        <a href="https://www.tiktok.com/@bukajalantravel" target="_blank">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Pages</h4><ul>
+      <li><a href="bukajalan_home_v5.html">Home</a></li>
+      <li><a href="bukajalan_travel_guides.html">Travel Guides</a></li>
+      <li><a href="bukajalan_planning.html">Travel Planning</a></li>
+      <li><a href="bukajalan_blog.html">Blog</a></li>
+      <li><a href="bukajalan_about.html">About Us</a></li>
+      <li><a href="bukajalan_contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms & Conditions</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Buka Jalan Travel Planner. All rights reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+const fades=document.querySelectorAll('.fade-up');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.05});
+fades.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
