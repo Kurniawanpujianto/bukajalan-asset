@@ -53,7 +53,7 @@ nav {
 }
 .nav-cart:hover { border-color: var(--honey-mid); color: var(--honey-mid); }
 
-/* HERO — satu foto bagus, bukan slideshow */
+/* HERO */
 .page-hero {
   margin-top: 72px;
   position: relative; height: 68vh; min-height: 480px;
@@ -149,7 +149,6 @@ nav {
 }
 .regions-label::after { content: ''; flex: 1; height: 1px; background: var(--cream-dark); }
 
-/* Sulawesi — featured full width */
 .region-featured {
   display: grid; grid-template-columns: 1fr 1fr;
   margin-bottom: 2px; background: var(--cream-mid);
@@ -203,7 +202,6 @@ nav {
 }
 .rgl-arrow { color: var(--honey); font-size: 16px; }
 
-/* Sub-region cards grid */
 .sub-regions {
   display: grid; grid-template-columns: repeat(3,1fr);
   gap: 2px; margin-bottom: 2px; background: var(--cream-dark);
@@ -249,7 +247,6 @@ nav {
   padding: 4px 10px;
 }
 
-/* Java row */
 .region-row {
   display: grid; grid-template-columns: 1fr 1fr;
   margin-bottom: 2px; background: var(--cream-mid);
@@ -314,10 +311,101 @@ nav {
 }
 .map-header h2 em { font-style: italic; color: var(--honey); }
 .indonesia-map-wrap {
-  width: 100%; aspect-ratio: 1272 / 712; margin-bottom: 48px;
-  border-radius: 4px; overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1272 / 712;
+  margin-bottom: 48px;
+  overflow: visible;
+  border-radius: 8px;
+  border: 1px solid rgba(196,154,88,0.2);
+  box-shadow: 0 0 0 1px rgba(196,154,88,0.08), 0 24px 64px rgba(0,0,0,0.4);
+  position: relative;
 }
-.indonesia-map-wrap svg { width: 100%; height: 100%; display: block; }
+.indonesia-map-wrap img {
+  width: 100%; height: 100%; display: block; object-fit: fill;
+  border-radius: 8px;
+}
+
+/* MAP PINS */
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  z-index: 10;
+}
+.map-pin-icon {
+  width: 28px; height: 36px;
+  display: flex; flex-direction: column; align-items: center;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.map-pin-icon svg { width: 28px; height: 36px; }
+.map-pin:hover .map-pin-icon {
+  transform: scale(1.25) translateY(-3px);
+  filter: drop-shadow(0 4px 10px rgba(196,154,88,0.6));
+}
+.map-pin.active .map-pin-icon {
+  transform: scale(1.3) translateY(-4px);
+  filter: drop-shadow(0 4px 12px rgba(196,154,88,0.8));
+}
+
+/* PIN POPUP */
+.pin-popup {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  background: #1a1710;
+  border: 1px solid rgba(196,154,88,0.35);
+  border-radius: 6px;
+  padding: 16px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+.pin-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(196,154,88,0.35);
+}
+.map-pin.active .pin-popup {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+.popup-region {
+  font-family: var(--sans); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--honey); margin-bottom: 5px;
+}
+.popup-name {
+  font-family: var(--serif); font-size: 17px; font-weight: 400;
+  color: #fff; line-height: 1.15; margin-bottom: 8px;
+}
+.popup-desc {
+  font-family: var(--sans); font-size: 11px; font-weight: 300;
+  color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 12px;
+}
+.popup-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--honey); text-decoration: none;
+  border: 1px solid rgba(196,154,88,0.4);
+  padding: 6px 12px; border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.popup-btn:hover { background: rgba(196,154,88,0.15); }
+.popup-btn.coming {
+  color: rgba(255,255,255,0.3); border-color: rgba(255,255,255,0.1);
+  cursor: default; pointer-events: none;
+}
 .places-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
   background: rgba(255,255,255,0.05); margin-bottom: 2px;
@@ -408,7 +496,7 @@ footer {
   <a href="#" class="nav-cart">Cart (0)</a>
 </nav>
 
-<!-- PAGE HERO — 1 foto saja, bukan slideshow -->
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-content">
@@ -417,7 +505,7 @@ footer {
   </div>
 </section>
 
-<!-- COUNTRY INFO BAR — Indonesia -->
+<!-- COUNTRY INFO BAR -->
 <div class="info-bar">
   <div class="info-bar-inner">
     <div class="info-item">
@@ -456,7 +544,6 @@ footer {
 <div class="regions-section">
   <p class="regions-label">Sulawesi</p>
 
-  <!-- SULAWESI — featured -->
   <div class="region-featured fade-up">
     <div class="region-featured-img">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0615.jpg" alt="Sulawesi">
@@ -494,7 +581,6 @@ footer {
     </div>
   </div>
 
-  <!-- SUB-REGION CARDS: Toraja, Wakatobi, Central, North (coming soon), South (coming soon) -->
   <div class="sub-regions fade-up">
     <a href="#" class="sub-card">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg" alt="Toraja">
@@ -543,7 +629,6 @@ footer {
       </div>
       <span class="sub-card-coming">Coming Soon</span>
     </a>
-    <!-- 5 cards — last spot intentionally empty for balance or add more later -->
     <div class="sub-card" style="background:var(--dark-mid); display:flex; align-items:center; justify-content:center;">
       <p style="font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,0.2);text-align:center;padding:24px;">More destinations<br>coming soon</p>
     </div>
@@ -571,14 +656,15 @@ footer {
   </div>
 </div>
 
-<!-- PLACES WE VISITED MAP-STYLE -->
+<!-- MAP SECTION -->
 <section class="map-section fade-up">
   <div class="map-header">
     <p class="eyebrow">Our Journey</p>
     <h2>All the places <em>we have visited</em></h2>
   </div>
-  <div class="indonesia-map-wrap">
-    <img src="indonesia-map.svg" alt="Indonesia Map" style="width:100%;height:100%;display:block;">
+  <div class="indonesia-map-wrap" id="mapWrap">
+    <img src="indonesia-map.svg" alt="Indonesia Map">
+    <!-- Pins injected by JS -->
   </div>
   <div class="places-grid">
     <div class="place-item">
@@ -637,8 +723,7 @@ footer {
   <div class="footer-top">
     <div>
       <div class="footer-logo">
-        <img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan"
-             onerror="this.style.display='none'">
+        <img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan" onerror="this.style.display='none'">
       </div>
       <p class="footer-tagline">From our experience to your next adventure — we open the road to Indonesia's authentic culture and untouched nature.</p>
       <div class="footer-social">
@@ -673,11 +758,98 @@ footer {
 </footer>
 
 <script>
+// Fade-in observer
 const fades = document.querySelectorAll('.fade-up');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.06 });
 fades.forEach(el => io.observe(el));
+
+// Map pin data — positions as % of 1272x712 map
+const destinations = [
+  { name: 'Makassar', region: 'South Sulawesi', x: 51.8, y: 61.2,
+    desc: 'Gateway to Sulawesi. A vibrant port city full of culture, seafood, and the famous Fort Rotterdam.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Bira & Bara', region: 'South Sulawesi', x: 52.4, y: 67.5,
+    desc: 'Pristine white sand beaches at the southern tip of Sulawesi. Traditional Bugis pinisi boats still built here.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Toraja', region: 'South Sulawesi', x: 50.2, y: 54.8,
+    desc: 'Ancient highland culture with spectacular funeral ceremonies, cliff-carved tombs, and stunning rice terraces.',
+    btn: 'Buy Guide', link: '#', coming: false },
+  { name: 'Sorowako', region: 'South Sulawesi', x: 56.2, y: 59.8,
+    desc: 'Remote highland town on Lake Matano — one of the deepest lakes in the world, crystal clear and serene.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Tentena', region: 'Central Sulawesi', x: 55.6, y: 51.8,
+    desc: 'Peaceful town on Lake Poso. Starting point for jungle treks and home to the famous Pamona eel tradition.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Togean Islands', region: 'Central Sulawesi', x: 58.4, y: 41.4,
+    desc: 'Remote island paradise with untouched coral reefs, sea nomads, and some of Sulawesi\'s best diving.',
+    btn: 'Buy Guide', link: '#', coming: false },
+  { name: 'Luwuk & Banggai', region: 'Central Sulawesi', x: 63.1, y: 49.8,
+    desc: 'Off-the-beaten-path eastern Sulawesi. The Banggai cardinalfish is endemic to these waters only.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Wakatobi', region: 'South-East Sulawesi', x: 58.9, y: 63.8,
+    desc: 'World-class dive destination and UNESCO biosphere reserve. Four islands surrounded by stunning coral walls.',
+    btn: 'Buy Guide', link: '#', coming: false },
+  { name: 'Manado', region: 'North Sulawesi', x: 64.8, y: 36.8,
+    desc: 'Cosmopolitan northern capital and gateway to Bunaken. Known for its unique cuisine and warm dive waters.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Tomohon', region: 'North Sulawesi', x: 64.3, y: 38.4,
+    desc: 'City of flowers in the highlands near two active volcanoes. Famous for its colourful flower festival.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Bunaken', region: 'North Sulawesi', x: 65.1, y: 35.2,
+    desc: 'Legendary marine national park. Wall dives, sea turtles, and some of the highest marine biodiversity on Earth.',
+    btn: 'Coming Soon', link: '#', coming: true },
+  { name: 'Yogyakarta', region: 'Java', x: 33.1, y: 73.4,
+    desc: 'Heart of Javanese art and culture. Borobudur, Prambanan, batik workshops, and unforgettable street food.',
+    btn: 'Coming Soon', link: '#', coming: true },
+];
+
+const PIN_SVG = `<svg viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 36 14 36C14 36 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#C49A58"/>
+  <path d="M14 1.5C7.096 1.5 1.5 7.096 1.5 14C1.5 23.6 14 34 14 34C14 34 26.5 23.6 26.5 14C26.5 7.096 20.904 1.5 14 1.5Z" fill="#B8893F"/>
+  <circle cx="14" cy="14" r="5.5" fill="white" opacity="0.95"/>
+  <circle cx="14" cy="14" r="3" fill="#C49A58"/>
+</svg>`;
+
+function createPins() {
+  const wrap = document.getElementById('mapWrap');
+  if (!wrap) return;
+
+  destinations.forEach((d, i) => {
+    const pin = document.createElement('div');
+    pin.className = 'map-pin';
+    pin.style.left = d.x + '%';
+    pin.style.top = d.y + '%';
+    pin.dataset.index = i;
+
+    pin.innerHTML = `
+      <div class="map-pin-icon">${PIN_SVG}</div>
+      <div class="pin-popup">
+        <p class="popup-region">${d.region}</p>
+        <p class="popup-name">${d.name}</p>
+        <p class="popup-desc">${d.desc}</p>
+        <a href="${d.link}" class="popup-btn${d.coming ? ' coming' : ''}">
+          ${d.coming ? '⏳ ' + d.btn : '→ ' + d.btn}
+        </a>
+      </div>`;
+
+    pin.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = pin.classList.contains('active');
+      document.querySelectorAll('.map-pin.active').forEach(p => p.classList.remove('active'));
+      if (!isActive) pin.classList.add('active');
+    });
+
+    wrap.appendChild(pin);
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.map-pin.active').forEach(p => p.classList.remove('active'));
+  });
+}
+
+createPins();
 </script>
 </body>
 </html>
