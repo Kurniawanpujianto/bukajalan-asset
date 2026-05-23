@@ -53,7 +53,7 @@ nav {
 }
 .nav-cart:hover { border-color: var(--honey-mid); color: var(--honey-mid); }
 
-/* HERO — satu foto bagus, bukan slideshow */
+/* HERO */
 .page-hero {
   margin-top: 72px;
   position: relative; height: 68vh; min-height: 480px;
@@ -149,7 +149,6 @@ nav {
 }
 .regions-label::after { content: ''; flex: 1; height: 1px; background: var(--cream-dark); }
 
-/* Sulawesi — featured full width */
 .region-featured {
   display: grid; grid-template-columns: 1fr 1fr;
   margin-bottom: 2px; background: var(--cream-mid);
@@ -203,7 +202,6 @@ nav {
 }
 .rgl-arrow { color: var(--honey); font-size: 16px; }
 
-/* Sub-region cards grid */
 .sub-regions {
   display: grid; grid-template-columns: repeat(3,1fr);
   gap: 2px; margin-bottom: 2px; background: var(--cream-dark);
@@ -249,7 +247,6 @@ nav {
   padding: 4px 10px;
 }
 
-/* Java row */
 .region-row {
   display: grid; grid-template-columns: 1fr 1fr;
   margin-bottom: 2px; background: var(--cream-mid);
@@ -314,10 +311,15 @@ nav {
 }
 .map-header h2 em { font-style: italic; color: var(--honey); }
 .indonesia-map-wrap {
-  width: 100%; aspect-ratio: 1272 / 712; margin-bottom: 48px;
-  border-radius: 4px; overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1272 / 712;
+  margin-bottom: 48px;
+  overflow: hidden;
+  border-radius: 4px;
 }
-.indonesia-map-wrap svg { width: 100%; height: 100%; display: block; }
+.indonesia-map-wrap img {
+  width: 100%; height: 100%; display: block; object-fit: fill;
+}
 .places-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
   background: rgba(255,255,255,0.05); margin-bottom: 2px;
@@ -408,7 +410,7 @@ footer {
   <a href="#" class="nav-cart">Cart (0)</a>
 </nav>
 
-<!-- PAGE HERO — 1 foto saja, bukan slideshow -->
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-content">
@@ -417,7 +419,7 @@ footer {
   </div>
 </section>
 
-<!-- COUNTRY INFO BAR — Indonesia -->
+<!-- COUNTRY INFO BAR -->
 <div class="info-bar">
   <div class="info-bar-inner">
     <div class="info-item">
@@ -456,7 +458,6 @@ footer {
 <div class="regions-section">
   <p class="regions-label">Sulawesi</p>
 
-  <!-- SULAWESI — featured -->
   <div class="region-featured fade-up">
     <div class="region-featured-img">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0615.jpg" alt="Sulawesi">
@@ -494,7 +495,6 @@ footer {
     </div>
   </div>
 
-  <!-- SUB-REGION CARDS: Toraja, Wakatobi, Central, North (coming soon), South (coming soon) -->
   <div class="sub-regions fade-up">
     <a href="#" class="sub-card">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg" alt="Toraja">
@@ -543,7 +543,6 @@ footer {
       </div>
       <span class="sub-card-coming">Coming Soon</span>
     </a>
-    <!-- 5 cards — last spot intentionally empty for balance or add more later -->
     <div class="sub-card" style="background:var(--dark-mid); display:flex; align-items:center; justify-content:center;">
       <p style="font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,0.2);text-align:center;padding:24px;">More destinations<br>coming soon</p>
     </div>
@@ -571,14 +570,14 @@ footer {
   </div>
 </div>
 
-<!-- PLACES WE VISITED MAP-STYLE -->
+<!-- MAP SECTION -->
 <section class="map-section fade-up">
   <div class="map-header">
     <p class="eyebrow">Our Journey</p>
     <h2>All the places <em>we have visited</em></h2>
   </div>
   <div class="indonesia-map-wrap">
-    <img src="indonesia-map.svg" alt="Indonesia Map" style="width:100%;height:100%;display:block;">
+    <img src="indonesia-map.svg" alt="Indonesia Map">
   </div>
   <div class="places-grid">
     <div class="place-item">
@@ -637,8 +636,7 @@ footer {
   <div class="footer-top">
     <div>
       <div class="footer-logo">
-        <img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan"
-             onerror="this.style.display='none'">
+        <img src="https://scriptmedia.net/bukajalantravel/wp-content/uploads/2026/02/Logo-Black-e1776268893218.png" alt="Buka Jalan" onerror="this.style.display='none'">
       </div>
       <p class="footer-tagline">From our experience to your next adventure — we open the road to Indonesia's authentic culture and untouched nature.</p>
       <div class="footer-social">
