@@ -146,6 +146,58 @@ footer{background:var(--cream-mid);padding:72px 80px 44px;border-top:1px solid v
 
 .fade-up{opacity:0;transform:translateY(26px);transition:opacity 0.75s ease,transform 0.75s ease}
 .fade-up.in{opacity:1;transform:translateY(0)}
+
+/* HAMBURGER & MOBILE MENU */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px;
+}
+.nav-hamburger span { display: block; height: 1.5px; background: var(--text-mid); transition: transform 0.3s, opacity 0.3s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-mobile-menu {
+  display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 299;
+  background: rgba(245,240,232,0.98); backdrop-filter: blur(16px);
+  flex-direction: column; padding: 24px 28px 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12); border-top: 1px solid var(--cream-dark);
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-mid); text-decoration: none;
+  padding: 14px 0; border-bottom: 1px solid var(--cream-dark); transition: color 0.2s;
+}
+.nav-mobile-menu a:last-child { border-bottom: none; }
+.nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: var(--honey-mid); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-cart { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .breadcrumb { left: 24px; top: 88px; }
+  .post-hero-content { padding: 0 24px 48px; }
+
+  .article-wrap { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
+  .post-sidebar { position: static; }
+
+  .photo-2col { grid-template-columns: 1fr; }
+
+  .author-section { padding: 48px 24px; }
+  .author-card { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+  .author-avatar { margin: 0 auto; }
+
+  .more-posts { padding: 48px 24px; }
+  .more-grid { grid-template-columns: 1fr; }
+
+  footer { padding: 48px 24px 32px; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -161,7 +213,19 @@ footer{background:var(--cream-mid);padding:72px 80px 44px;border-top:1px solid v
     <li><a href="bukajalan_contact.html">Contact</a></li>
   </ul>
   <a href="#" class="nav-cart">Cart (0)</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="bukajalan_home_v5.html">Home</a>
+  <a href="bukajalan_travel_guides.html">Travel Guides</a>
+  <a href="bukajalan_planning.html">Travel Planning</a>
+  <a href="bukajalan_blog.html" class="active">Blog</a>
+  <a href="bukajalan_about.html">About Us</a>
+  <a href="bukajalan_contact.html">Contact</a>
+  <a href="#">Cart (0)</a>
+</div>
 
 <section class="post-hero">
   <div class="post-hero-bg"></div>
@@ -355,6 +419,12 @@ footer{background:var(--cream-mid);padding:72px 80px 44px;border-top:1px solid v
 </footer>
 
 <script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if (hamburger) {
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  document.addEventListener('click', (e) => { if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); } });
+}
 const fades=document.querySelectorAll('.fade-up');
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.05});
 fades.forEach(el=>io.observe(el));
