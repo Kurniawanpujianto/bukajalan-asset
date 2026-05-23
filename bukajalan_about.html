@@ -342,9 +342,9 @@ footer { background: var(--cream-mid); padding: 72px 80px 44px; border-top: 1px 
 /* ══ HAMBURGER NAV ═══════════════════════════ */
 .nav-hamburger {
   display: none; flex-direction: column; justify-content: center; gap: 5px;
-  width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px;
+  width: 36px; height: 36px; cursor: pointer; background: var(--honey-deep); border: none; padding: 4px;
 }
-.nav-hamburger span { display: block; height: 1.5px; background: var(--text-mid); transition: transform 0.3s, opacity 0.3s; }
+.nav-hamburger span { display: block; height: 1.5px; background: var(--text-mid); transition: transform 0.3s, opacity 0.3s;border: 1px solid var(--honey-deep);width: 22px; }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
