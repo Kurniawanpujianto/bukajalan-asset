@@ -217,6 +217,65 @@ footer{background:var(--cream-mid);padding:48px 80px 36px;border-top:1px solid v
 
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .fade-up.in{opacity:1;transform:translateY(0)}
+
+/* HAMBURGER */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px;
+}
+.nav-hamburger span { display: block; height: 1.5px; background: var(--text-mid); transition: transform 0.3s, opacity 0.3s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-mobile-menu {
+  display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 299;
+  background: rgba(245,240,232,0.98); backdrop-filter: blur(16px);
+  flex-direction: column; padding: 24px 28px 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12); border-top: 1px solid var(--cream-dark);
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-mid); text-decoration: none;
+  padding: 14px 0; border-bottom: 1px solid var(--cream-dark); transition: color 0.2s;
+}
+.nav-mobile-menu a:last-child { border-bottom: none; }
+.nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: var(--honey-mid); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-cart-btn { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .cart-drawer { width: 100%; }
+
+  .page-wrap { padding: 40px 24px; }
+
+  .product-grid { grid-template-columns: 1fr; gap: 40px; }
+  .buy-sticky { position: static; }
+
+  .product-thumbs { grid-template-columns: repeat(2,1fr); }
+
+  .checkout-wrap { padding: 40px 24px; }
+  .checkout-grid { grid-template-columns: 1fr; gap: 32px; }
+  .order-summary { position: static; }
+
+  .other-grid { grid-template-columns: 1fr; }
+
+  footer { padding: 28px 24px 24px; }
+  .footer-bottom-simple { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  nav { padding: 0 28px; }
+  .nav-links { gap: 18px; }
+  .page-wrap { padding: 48px 40px; }
+  .product-grid { gap: 48px; }
+}
 </style>
 </head>
 <body>
@@ -238,7 +297,19 @@ footer{background:var(--cream-mid);padding:48px 80px 36px;border-top:1px solid v
     Cart (<span id="cartCount">0</span>)
     <span class="cart-badge" id="cartBadge">0</span>
   </button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="bukajalan_home_v5.html">Home</a>
+  <a href="bukajalan_travel_guides.html" class="active">Travel Guides</a>
+  <a href="bukajalan_planning.html">Travel Planning</a>
+  <a href="bukajalan_blog.html">Blog</a>
+  <a href="bukajalan_about.html">About Us</a>
+  <a href="bukajalan_contact.html">Contact</a>
+  <a href="#" onclick="openCart();return false">Cart</a>
+</div>
 
 <!-- CART DRAWER -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
@@ -574,6 +645,13 @@ footer{background:var(--cream-mid);padding:48px 80px 36px;border-top:1px solid v
 </footer>
 
 <script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if (hamburger) {
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  document.addEventListener('click', (e) => { if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); } });
+}
+
 // ── CART STATE
 let cart = JSON.parse(localStorage.getItem('bjCart') || '[]');
 
