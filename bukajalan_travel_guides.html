@@ -330,13 +330,14 @@ nav {
   position: absolute;
   transform: translate(-50%, -100%);
   cursor: pointer;
-  z-index: 10;
+/*   z-index: 10; */
 }
 .map-pin-icon {
   width: 28px; height: 36px;
   display: flex; flex-direction: column; align-items: center;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
   transition: transform 0.2s ease, filter 0.2s ease;
+  z-index: 10;
 }
 .map-pin-icon svg { width: 28px; height: 36px; }
 .map-pin:hover .map-pin-icon {
@@ -553,7 +554,7 @@ footer {
       <h3>Sulawesi<em>Our home away from home</em></h3>
       <p>The island that keeps pulling us back. From the highland traditions of Toraja to the turquoise waters of Wakatobi — Sulawesi is unlike anywhere else in Indonesia. Raw, authentic, and endlessly surprising.</p>
       <div class="region-guides">
-        <a href="#" class="region-guide-link">
+        <a href="bukajalan_order_guide.html?guide=toraja" class="region-guide-link">
           <div class="rgl-left">
             <span class="rgl-sub">South Sulawesi</span>
             <span class="rgl-name">Toraja Travel Guide</span>
@@ -561,7 +562,7 @@ footer {
           <span class="rgl-price">€ 12,–</span>
           <span class="rgl-arrow">→</span>
         </a>
-        <a href="#" class="region-guide-link">
+        <a href="bukajalan_order_guide.html?guide=wakatobi" class="region-guide-link">
           <div class="rgl-left">
             <span class="rgl-sub">South-East Sulawesi</span>
             <span class="rgl-name">Wakatobi Travel Guide</span>
@@ -569,7 +570,7 @@ footer {
           <span class="rgl-price">€ 12,–</span>
           <span class="rgl-arrow">→</span>
         </a>
-        <a href="#" class="region-guide-link">
+        <a href="bukajalan_order_guide.html?guide=central" class="region-guide-link">
           <div class="rgl-left">
             <span class="rgl-sub">Central Sulawesi</span>
             <span class="rgl-name">Central Sulawesi Travel Guide</span>
@@ -582,7 +583,7 @@ footer {
   </div>
 
   <div class="sub-regions fade-up">
-    <a href="#" class="sub-card">
+    <a href="bukajalan_order_guide.html?guide=toraja" class="sub-card">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Toraja/Bydon_0636.jpg" alt="Toraja">
       <div class="sub-card-overlay"></div>
       <div class="sub-card-text">
@@ -591,7 +592,7 @@ footer {
         <span class="sub-card-cta">Buy guide →</span>
       </div>
     </a>
-    <a href="#" class="sub-card">
+    <a href="bukajalan_order_guide.html?guide=wakatobi" class="sub-card">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Wakatobi/dji_export_20260213_photo_0015.JPG" alt="Wakatobi">
       <div class="sub-card-overlay"></div>
       <div class="sub-card-text">
@@ -600,7 +601,7 @@ footer {
         <span class="sub-card-cta">Buy guide →</span>
       </div>
     </a>
-    <a href="#" class="sub-card">
+    <a href="bukajalan_order_guide.html?guide=central" class="sub-card">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/Central%20Sulawesi/IMG_5873.jpg" alt="Central Sulawesi">
       <div class="sub-card-overlay"></div>
       <div class="sub-card-text">
@@ -609,7 +610,7 @@ footer {
         <span class="sub-card-cta">Buy guide →</span>
       </div>
     </a>
-    <a href="#" class="sub-card">
+    <a href="bukajalan_order_guide.html?guide=north" class="sub-card">
       <img src="https://raw.githubusercontent.com/Kurniawanpujianto/bukajalan-asset/main/North%20Sulawesi/7fb2bb9a-26da-468e-b3ee-36fce3138f29.jpg" alt="North Sulawesi">
       <div class="sub-card-overlay"></div>
       <div class="sub-card-text">
@@ -775,34 +776,34 @@ const destinations = [
     btn: 'Coming Soon', link: '#', coming: true },
   { name: 'Toraja', region: 'South Sulawesi', x: 50.2, y: 54.8,
     desc: 'Ancient highland culture with spectacular funeral ceremonies, cliff-carved tombs, and stunning rice terraces.',
-    btn: 'Buy Guide', link: '#', coming: false },
+    btn: 'Buy Guide', link: 'bukajalan_order_guide.html?guide=toraja', coming: false },
   { name: 'Sorowako', region: 'South Sulawesi', x: 56.2, y: 59.8,
     desc: 'Remote highland town on Lake Matano — one of the deepest lakes in the world, crystal clear and serene.',
     btn: 'Coming Soon', link: '#', coming: true },
   { name: 'Tentena', region: 'Central Sulawesi', x: 55.6, y: 51.8,
     desc: 'Peaceful town on Lake Poso. Starting point for jungle treks and home to the famous Pamona eel tradition.',
-    btn: 'Coming Soon', link: '#', coming: true },
+    btn: 'Coming Soon', link: 'bukajalan_order_guide.html?guide=central', coming: true },
   { name: 'Togean Islands', region: 'Central Sulawesi', x: 58.4, y: 41.4,
     desc: 'Remote island paradise with untouched coral reefs, sea nomads, and some of Sulawesi\'s best diving.',
-    btn: 'Buy Guide', link: '#', coming: false },
+    btn: 'Buy Guide', link: 'bukajalan_order_guide.html?guide=central', coming: false },
   { name: 'Luwuk & Banggai', region: 'Central Sulawesi', x: 63.1, y: 49.8,
     desc: 'Off-the-beaten-path eastern Sulawesi. The Banggai cardinalfish is endemic to these waters only.',
-    btn: 'Coming Soon', link: '#', coming: true },
+    btn: 'Coming Soon', link: 'bukajalan_order_guide.html?guide=central', coming: true },
   { name: 'Wakatobi', region: 'South-East Sulawesi', x: 58.9, y: 63.8,
     desc: 'World-class dive destination and UNESCO biosphere reserve. Four islands surrounded by stunning coral walls.',
-    btn: 'Buy Guide', link: '#', coming: false },
+    btn: 'Buy Guide', link: 'bukajalan_order_guide.html?guide=wakatobi', coming: false },
   { name: 'Manado', region: 'North Sulawesi', x: 64.8, y: 36.8,
     desc: 'Cosmopolitan northern capital and gateway to Bunaken. Known for its unique cuisine and warm dive waters.',
-    btn: 'Coming Soon', link: '#', coming: true },
+    btn: 'Coming Soon', link: 'bukajalan_order_guide.html?guide=north', coming: true },
   { name: 'Tomohon', region: 'North Sulawesi', x: 64.3, y: 38.4,
     desc: 'City of flowers in the highlands near two active volcanoes. Famous for its colourful flower festival.',
-    btn: 'Coming Soon', link: '#', coming: true },
+    btn: 'Coming Soon', link: 'bukajalan_order_guide.html?guide=north', coming: true },
   { name: 'Bunaken', region: 'North Sulawesi', x: 65.1, y: 35.2,
     desc: 'Legendary marine national park. Wall dives, sea turtles, and some of the highest marine biodiversity on Earth.',
-    btn: 'Coming Soon', link: '#', coming: true },
+    btn: 'Coming Soon', link: 'bukajalan_order_guide.html?guide=north', coming: true },
   { name: 'Yogyakarta', region: 'Java', x: 33.1, y: 73.4,
     desc: 'Heart of Javanese art and culture. Borobudur, Prambanan, batik workshops, and unforgettable street food.',
-    btn: 'Coming Soon', link: '#', coming: true },
+    btn: 'Coming Soon', link: 'bukajalan_order_guide.html?guide=yogya', coming: true },
 ];
 
 const PIN_SVG = `<svg viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
