@@ -313,6 +313,11 @@ nav {
   font-weight: 400; color: #fff; line-height: 1.1;
 }
 .map-header h2 em { font-style: italic; color: var(--honey); }
+.indonesia-map-wrap {
+  width: 100%; aspect-ratio: 1272 / 712; margin-bottom: 48px;
+  border-radius: 4px; overflow: hidden;
+}
+.indonesia-map-wrap svg { width: 100%; height: 100%; display: block; }
 .places-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
   background: rgba(255,255,255,0.05); margin-bottom: 2px;
@@ -571,6 +576,9 @@ footer {
   <div class="map-header">
     <p class="eyebrow">Our Journey</p>
     <h2>All the places <em>we have visited</em></h2>
+  </div>
+  <div class="indonesia-map-wrap">
+    <img src="indonesia-map.svg" alt="Indonesia Map" style="width:100%;height:100%;display:block;">
   </div>
   <div class="places-grid">
     <div class="place-item">
